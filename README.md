@@ -1,4 +1,3 @@
-
 # CQC Care Home Quality: West Sussex vs England
 
 **Tools:** PostgreSQL 18 · pgAdmin 4 · Excel (Power Query, XLOOKUP, FILTER) · **Data:** public CQC data, 1 Oct 2026 release
@@ -14,11 +13,11 @@ This project answers it for **West Sussex**, comparing its care homes with **Eng
 
 ## Key findings
 
-1. **West Sussex: 84.1%** of rated homes are Good or Outstanding, slightly above England (**82.6%**) and the South East (**81.9%**). The gap with England is about 5 homes out of 315.
-2. West Sussex is **+2.2 points** above the South East average, **51st of 140** authorities when each is compared with its own region.
-3. Nationally, homes run by **larger providers rate higher**: 79.0% for single-home owners rising to 87.3% for groups of 21+ homes. West Sussex **dementia homes (84.8%)** beat England's dementia homes (79.6%).
-4. Of the **2,342** homes rated below Good, over 9 in 10 fall short on **Well-led (98.2%)** and **Safe (93.1%)**, but only about 1 in 5 on **Caring (21.9%)**.
-5. **Caution:** **72.9%** of ratings are over 2 years old, and recent inspections rate fewer homes Good (**70.8%** vs **87.0%**), so older ratings may overstate today's quality.
+1. **Old ratings may overstate today's quality:** **72.9%** of ratings are over 2 years old, and recent ratings are far lower (**70.8%** vs **87.0%** Good or Outstanding). CQC re-inspects weaker homes sooner, and introduced a new assessment framework from late 2023, so part of the gap may reflect the change in method.
+2. **Leadership and safety drive poor ratings:** of the **2,342** homes rated below Good, **98.2%** fall short on Well-led and **93.1%** on Safe, but only **21.9%** on Caring.
+3. **Dementia homes rate lower nationally:** **79.6%** Good or Outstanding vs **86.4%** for other homes.
+4. **Larger providers rate higher:** from **79.0%** for single-home owners to **87.3%** for groups of 21+ homes. This is a correlation; the data cannot show why.
+5. **West Sussex is in line with England:** **84.1%** vs **82.6%**, a gap within the roughly ±4-point margin for 315 homes. It ranks **69th of 140** authorities nationally and **8th of 19** in the South East. Its dementia homes (**84.8%**) do not show the national dip, but with 165 homes treat that with care.
 
 ## Data
 
@@ -91,13 +90,14 @@ Joined on **Location ID**. Raw files are not stored in this repo – download th
 - **Small numbers:** authorities with fewer than 20 rated homes are not ranked; in small authorities one home can move the % by 5+ points.
 - **Home size is confounded:** 87% of 1–10 bed homes are learning-disability/autism services, so their higher scores may reflect who they care for, not their size.
 - **Correlation, not cause:** larger providers rate higher, but this data cannot show why (groups may also sell or close failing homes).
-- **Rating age:** CQC re-inspects weaker homes sooner, so recent ratings skew lower. Publication date is not the inspection date.
+- **Rating age:** CQC re-inspects weaker homes sooner, so recent ratings skew lower. CQC also moved to a new assessment framework from late 2023, so recent and older ratings were not produced in the same way. Publication date is not the inspection date.
+- **Margin of error:** with 315 West Sussex homes, a rate of about 84% has a 95% margin of roughly ±4 points, so small differences from England are not meaningful.
 - **Snapshot:** all results are as at **1 October 2026**; the date is fixed in the SQL so results are reproducible.
 
 ## What I'd do next
 
-- Build a "rating age" watch-list: flag homes whose Good or Outstanding rating is over 3 years old, so commissioners can prioritise checks on homes that may have changed since (e.g. after a change of manager or owner).
-- Automate the monthly refresh: the next step is a scheduled pipeline (download the new CQC files → load and clean in PostgreSQL → refresh the dashboard), so new ratings flow through without manual steps.
+- **Build a "rating age" watch-list:** flag homes whose Good or Outstanding rating is over 3 years old, so commissioners can prioritise checks on homes that may have changed since (e.g. after a change of manager or owner).
+- **Automate the monthly refresh:** the next step is a scheduled pipeline (download the new CQC files → load and clean in PostgreSQL → refresh the dashboard), so new ratings flow through without manual steps.
 
 ## About
 
