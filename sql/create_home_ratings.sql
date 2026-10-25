@@ -1,5 +1,5 @@
 -- home_ratings: one row per care home with its 5 key-question ratings + overall
--- Source: stg_ratings (CQC Latest Ratings, 2 Oct 2026)
+-- Data: CQC files dated 1 Oct 2026 (published 2 Oct 2026)
 -- Pivots the long format (one row per domain) into one row per home.
 -- Domains CQC did not rate for a home are left NULL (30 gaps across 13,721 homes).
 DROP TABLE IF EXISTS home_ratings;
